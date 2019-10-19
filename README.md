@@ -1,3 +1,3 @@
-# AU-admin
+# mock-server
 
-## 管理系统模版
+## 模拟真实数据用

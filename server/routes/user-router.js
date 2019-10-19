@@ -52,6 +52,10 @@ router.post('/login', (req, res) => {
     },
   );
 });
+// 注册
+router.post('/register', (req, res) => {
+  console.log('注册接口', req.body);
+});
 router.post('/logout', (req, res) => {
   console.log('推出登陆');
   return success({ res, data: { logout: true } });

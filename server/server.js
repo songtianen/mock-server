@@ -8,7 +8,7 @@ const compression = require('compression');
 
 // -------
 const isEnv = process.env.NODE_ENV;
-const PORT = isEnv === 'production' ? 8888 : 6666;
+const PORT = isEnv === 'production' ? 7000 : 7001;
 let app = express();
 
 app.use(bodyParser.json()); // 请求体 json格式的数据转换成 req.body 格式的数据
