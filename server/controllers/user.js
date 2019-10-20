@@ -2,6 +2,9 @@ const { businessError, success } = require('../lib/responseTemplate');
 const { UserModel } = require('../model/model');
 const userSservice = require('../services/userService');
 
+let postRegister = async ({ req, res }) => {
+  userSservice.postRegister({ req, res });
+};
 let getUserInfo = ({ req, res }) => {
   // console.log('user-controller', req.user)
   let user = req.user;
@@ -32,7 +35,7 @@ let getUserPagelist = async ({ req, res }) => {
   let sortBy = req.query.sortBy;
   let descending = req.query.descending;
   let filter = JSON.parse(req.query.filter);
-  console.log('用户角色管理接收', req.query);
+  // console.log('用户角色管理接收', req.query);
   const info = await userSservice.getUserPagelist(
     pageIndex,
     pageSize,
@@ -48,9 +51,9 @@ let getUserPagelist = async ({ req, res }) => {
 
 const postEditRoleuser = async ({ req, res }) => {
   let roleUser = req.body;
-  console.log('移除和添加角色用户的接口', roleUser);
+  // console.log('移除和添加角色用户的接口', roleUser);
   const edit = await userSservice.postEditRoleuser(roleUser);
-  console.log('edit--', edit);
+  // console.log('edit--', edit);
   if (!edit) {
     return businessError(res, '数据库保存错误');
   }
@@ -81,4 +84,5 @@ module.exports = {
   getUserPagelist,
   getAllUser,
   postEditRoleuser,
+  postRegister,
 };

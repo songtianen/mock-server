@@ -6,6 +6,7 @@ const { md5PWD, secretKey } = require('../util/md5');
 const { businessError, success } = require('../lib/responseTemplate');
 const { PermissionCheck } = require('../middleware/PermissionCheck');
 const { checkRegister } = require('../util/userUtil');
+const { postRegister } = require('../controllers/user');
 
 const {
   getUserInfo,
@@ -57,6 +58,7 @@ router.post('/login', (req, res) => {
 router.post('/register', (req, res) => {
   checkRegister(req.body, res);
   // 用户信息保存数据库，返回token
+  postRegister({ req, res });
   // success({ res, data: { accessToken: 'song' } });
 });
 router.post('/logout', (req, res) => {
