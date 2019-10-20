@@ -1,14 +1,14 @@
-let businessError = (res, msg) => {
+let businessError = ({ res, data = '', msg = '' }) => {
   return res.json({
     statusCode: 500,
     msg: msg,
-    data: null,
+    data: data,
   });
 };
 
 let success = ({ res, data = '', msg = '' }) => {
   return res.json({
-    statusCode: 200,
+    status: 'ok',
     msg: msg,
     data: data,
   });

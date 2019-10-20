@@ -5,6 +5,7 @@ const { UserModel } = require('../model/model'); // 引入模型
 const { md5PWD, secretKey } = require('../util/md5');
 const { businessError, success } = require('../lib/responseTemplate');
 const { PermissionCheck } = require('../middleware/PermissionCheck');
+const { checkRegister } = require('../util/userUtil');
 
 const {
   getUserInfo,
@@ -54,7 +55,9 @@ router.post('/login', (req, res) => {
 });
 // 注册
 router.post('/register', (req, res) => {
-  console.log('注册接口', req.body);
+  checkRegister(req.body, res);
+  // 用户信息保存数据库，返回token
+  // success({ res, data: { accessToken: 'song' } });
 });
 router.post('/logout', (req, res) => {
   console.log('推出登陆');
