@@ -160,7 +160,7 @@ const getAllUser = async ({
 };
 // 用户注册
 const postRegister = async ({ req, res }) => {
-  const { mail, password, mobile, username } = req.body;
+  const { email, password, phone, username } = req.body;
   // 查询username是否存在，如果存在，返回错误
   const user = await UserModel.findOne({
     // 判断密码是否正确
@@ -171,11 +171,11 @@ const postRegister = async ({ req, res }) => {
   } else {
     const info = await new UserModel({
       id: uuidv4(),
-      email: mail,
+      email: email,
       isAdmin: 0,
       userName: username,
       pwd: md5PWD(password),
-      phone: mobile,
+      phone: phone,
     });
     // console.log('userinfo', info);
     info.save(function(err) {
