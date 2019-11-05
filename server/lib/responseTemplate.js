@@ -8,7 +8,7 @@ let businessError = ({ res, data = '', msg = '' }) => {
 
 let success = ({ res, data = '', msg = '' }) => {
   return res.json({
-    status: 'ok',
+    statusCode: 200,
     msg: msg,
     data: data,
   });

@@ -13,18 +13,18 @@ const checkDetailInfo = (localinfos, reqInfos) => {
     }
   }
   if (errInfo.length && errInfo.length > 0) {
-    let msg = errInfo.join();
-    return { msg: `请输入${msg}` };
+    // let msg = errInfo.join();
+    return { msg: `请输入:`, data: errInfo };
   }
 
   if (!mobileReg.test(email)) {
-    return { msg: '邮箱格式不正确', data: 'mail' };
+    return { msg: '邮箱格式不正确', data: ['email'] };
   }
   if (!phoneReg.test(phone)) {
-    return { msg: '手机格式式不正确', data: 'mobile' };
+    return { msg: '手机格式式不正确', data: ['phone'] };
   }
   if (confirm !== password) {
-    return { msg: '手机格式式不正确', data: 'confirm' };
+    return { msg: '密码不一致', data: ['confirm'] };
   }
   return 1;
 };

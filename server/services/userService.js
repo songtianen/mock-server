@@ -167,7 +167,7 @@ const postRegister = async ({ req, res }) => {
     userName: username,
   });
   if (user) {
-    return businessError({ res, msg: '用户名以存在!', data: 'username' });
+    return businessError({ res, msg: '用户名已存在!', data: ['username'] });
   } else {
     const info = await new UserModel({
       id: uuidv4(),
