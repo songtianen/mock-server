@@ -79,8 +79,8 @@ router.post('/logout', (req, res) => {
   return success({ res, data: { logout: true } });
 });
 // 用户注册接口
-router.get('/info', (req, res) => {
-  // console.log('getuserinfo user=====', req.user);
+router.get('/currentUser', (req, res) => {
+  console.log('getuserinfo user=====', req.user);
   getUserInfo({ req, res });
 });
 // 获取验证码

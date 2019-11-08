@@ -174,6 +174,8 @@ const postRegister = async ({ req, res }) => {
       email: email,
       isAdmin: 0,
       userName: username,
+      avatar:
+        'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
       pwd: md5PWD(password),
       phone: phone,
     });
