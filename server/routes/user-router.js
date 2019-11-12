@@ -46,14 +46,17 @@ router.post('/login', (req, res) => {
         if (user !== null) {
           const tokenObj = {
             username: user.userName,
-            isAdmin: user.isAdmin,
+            currentAuthority: user.isAdmin,
             userId: user._id,
           };
           // 用户登录成功过后生成token返给前端
           let token = jwt.sign(tokenObj, secretKey, {
             expiresIn: '24h', // 授权时效24小时
           });
-          success({ res, data: { accessToken: token } });
+          success({
+            res,
+            data: { accessToken: token, currentAuthority: user.isAdmin },
+          });
         } else {
           businessError({
             res,

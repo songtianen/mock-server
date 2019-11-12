@@ -172,28 +172,31 @@ const postRegister = async ({ req, res }) => {
     const info = await new UserModel({
       id: uuidv4(),
       email: email,
-      isAdmin: 0,
+      isAdmin: 'user',
       userName: username,
       avatar:
         'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
       pwd: md5PWD(password),
       phone: phone,
     });
-    // console.log('userinfo', info);
+    console.log('userinfo', info);
     info.save(function(err) {
       if (err) {
         return businessError({ res, msg: '数据库保存失败!', data: '' });
       }
       const tokenObj = {
         username: info.userName,
-        isAdmin: 0,
+        currentAuthority: info.isAdmin,
         userId: info.id,
       };
       // 用户登录成功过后生成token返给前端
       let token = jwt.sign(tokenObj, secretKey, {
         expiresIn: '24h', // 授权时效24小时
       });
-      return success({ res, data: { accessToken: token } });
+      return success({
+        res,
+        data: { accessToken: token, currentAuthority: info.isAdmin },
+      });
     });
   }
 };

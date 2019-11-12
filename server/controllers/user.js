@@ -16,14 +16,15 @@ let getUserInfo = ({ req, res }) => {
       return businessError({ res, msg: '获取用户信息失败!' });
     }
     if (doc) {
+      console.log('isadmin-----', doc.isAdmin);
       success({
         res,
         data: {
           userName: doc.userName,
           userRole: doc.userRole,
           userPermission: doc.userPermission,
-          isAdmin: doc.isAdmin,
-          avatarUrl: doc.avatar,
+          currentAuthority: doc.isAdmin,
+          avatar: doc.avatar,
         },
       });
     }
