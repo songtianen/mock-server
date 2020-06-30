@@ -64,7 +64,7 @@
     "echarts": "^4.2.1",
     "echarts-for-react": "^2.0.15-beta.0",
     "express": "^4.16.4",
-    "express-jwt": "^5.3.1",
+    "express-jwt": "^6.0.0",
     "express-session": "^1.15.6",
     "history": "^4.7.2",
     "jsonwebtoken": "^8.5.1",
